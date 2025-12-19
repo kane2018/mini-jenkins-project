@@ -10,20 +10,20 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'php -l index.php'
+                bat 'php -l index.php'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t mini-jenkins-app .'
+                bat 'docker build -t mini-jenkins-app .'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up --build -d'
+                bat 'docker-compose down || true'
+                bat 'docker-compose up --build -d'
             }
         }
     }
